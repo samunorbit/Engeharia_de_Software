@@ -1,0 +1,7 @@
+compilar no windows mingw32-make
+
+para os testes
+g++ -std=c++11 -c entidades.cpp
+g++ -std=c++11 entidades.o teste.cpp
+
+Samuel Ferreira Cruvinel 16/0144647
