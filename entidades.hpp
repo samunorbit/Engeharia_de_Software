@@ -79,10 +79,9 @@ class Usuario
 
 private:
 	vector<string> dados;
-	vector<Reserva> reservas;
-	vector<Carona> caronas;
+	vector<string> reservas;
+	vector<string> caronas;
 	Conta conta1,conta2;
-	bool completo;
 
 	bool verifica_nome(string nome);
 	bool verifica_telefone(string telefone);
@@ -96,15 +95,23 @@ public:
 	~Usuario();
 
 	bool set_dados(string nome, string telefone, string email, string senha, string cpf, Conta conta1, Conta conta2);
+	bool set_dados(string nome, string telefone, string email, string senha, string cpf,
+					string codigo_banco1, string numero_agencia1, string numero_conta1,
+					string codigo_banco2, string numero_agencia2, string numero_conta2);
 
-	bool nova_reserva(Reserva nova);
-	bool nova_reserva(int codigo,char assento,int bagagem);
-	bool nova_reserva(string codigo, string assento, string bagagem);
-
-	bool nova_carona(Carona nova);
-	bool nova_carona(string codigo, string origem, string destino, string data, string duracao, string vagas, string preco);
+	bool nova_reserva(string nova);
+	bool nova_carona(string nova);
 
 	string get_dados(int tipo);
 	vector<string> get_dados();
+
+	string get_dados_conta(int tipo, int indice);
+	vector<string> get_conta_dados(int indice);
+
+	string get_reservas(int tipo);
+	vector<string> get_reservas();
+	
+	string get_caronas(int tipo);
+	vector<string> get_caronas();
 	
 };

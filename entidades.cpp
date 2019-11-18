@@ -163,6 +163,7 @@ bool Reserva::set_dados(int codigo,char assento,int bagagem)
 	string aux(1,assento);
 	dados.push_back(aux);
 	dados.push_back(to_string(bagagem));
+	return true;
 }
 
 bool Reserva::set_dados(string codigo, string assento, string bagagem)
@@ -174,6 +175,7 @@ bool Reserva::set_dados(string codigo, string assento, string bagagem)
 	this->codigo = stoi(codigo);
 	this->assento = assento[0];
 	this->bagagem = stoi(bagagem);
+	return true;
 }
 string Reserva::get_dados(int tipo){return dados[tipo];}
 vector<string> Reserva::get_dados(){return dados;}
@@ -380,5 +382,67 @@ bool Usuario::set_dados(string nome, string telefone, string email, string senha
 	return aux;
 }
 
+bool Usuario::set_dados(string nome, string telefone, string email, string senha, string cpf,
+					string codigo_banco1, string numero_agencia1, string numero_conta1,
+					string codigo_banco2, string numero_agencia2, string numero_conta2)
+{
+	Conta conta_aux1,conta_aux2;
+	conta_aux1.set_codigo_banco(codigo_banco1);
+	conta_aux1.set_numero_agencia(numero_agencia1);
+	conta_aux1.set_numero_conta(numero_conta1);
+	conta_aux2.set_codigo_banco(codigo_banco2);
+	conta_aux2.set_numero_agencia(numero_agencia2);
+	conta_aux2.set_numero_conta(numero_conta2);
+	bool aux = conta_aux1.cadastro_completo() && conta_aux2.cadastro_completo();
+
+	return aux && set_dados(nome,telefone,email,senha,cpf,conta_aux1,conta_aux2);
+}
+
+bool Usuario::nova_reserva(string nova)
+{
+	reservas.push_back(nova);
+	return true;
+}
+
+bool Usuario::nova_carona(string nova)
+{
+	caronas.push_back(nova);
+	return true;
+}
+
 string Usuario::get_dados(int tipo){return dados[tipo];}
 vector<string> Usuario::get_dados(){return dados;}
+
+string Usuario::get_dados_conta(int tipo, int indice)
+{
+	if(indice ==0)
+	{
+		return conta1.get_dados(tipo);
+	}
+
+	if(indice ==1)
+	{
+		return conta2.get_dados(tipo);
+	}
+	return "ERRO";
+}
+vector<string> Usuario::get_conta_dados(int indice)
+{
+	vector<string> v;
+	if(indice ==0)
+	{
+		return conta1.get_dados();
+	}
+
+	if(indice ==1)
+	{
+		return conta2.get_dados();
+	}
+	return v;
+}
+
+string Usuario::get_reservas(int tipo){return reservas[tipo];}
+vector<string> Usuario::get_reservas(){return reservas;}
+	
+string Usuario::get_caronas(int tipo){return caronas[tipo];}
+vector<string> Usuario::get_caronas(){return caronas;}
