@@ -1,0 +1,18 @@
+assento				D
+bagagem				2
+codigo de banco		234
+codigo de carona	5431
+codigo de reserva	45321
+origem 				Brasilia-DF
+destino				Salvador-BH
+cpf					059.581.361-51
+data				18/11/2019
+duracao				3
+email 				s.f.cruvinel@gmail.com
+Nome				Samuel
+numero de agencia	3271-4
+numero de conta		471271-8
+preco				259.50
+telefone			61-51-332787006
+senha				azul7
+vagas				3
