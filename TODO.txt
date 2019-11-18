@@ -1,0 +1,6 @@
+A interface do programa gerenciara um vetor de usuarios 
+Cada usuario deve ser devidamente cadastrado na sua criaçao
+Cada usuario pode oferecer quantas caronas quiser
+Cada usuario pode fazer quantas reservas quiser
+Todas as entradadas devem ser verificadas e caso invalidas deve ser digitada novamente
+Todas as funções de entrada devem ser testadas

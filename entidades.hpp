@@ -2,16 +2,15 @@
 
 using namespace std;
 
-
 /*
 Funcoes Bool retornam false quando os valores recebidos sao invalidos porem esses valores serao salvos
 Variavel "completo" sera true quando o cadastro for completado de maneira adequada
 */
 
-
 class Conta
 {
 private:
+	string codigo_banco,numero_agencia,numero_conta;
 	vector<string> dados;
 	bool completo;
 
@@ -50,6 +49,7 @@ public:
 
 	bool set_dados(int codigo, char assento, int bagagem);
 	bool set_dados(string codigo, string assento, string bagagem);
+	string get_dados(int tipo);
 	vector<string> get_dados();
 };
 
@@ -57,19 +57,16 @@ class Carona
 {
 private:
 	vector<string> dados;
-	bool completo;
+
+	bool verifica_data(string data);
+	bool verifica_dados(string codigo, string origem, string destino, string data, string duracao, string vagas, string preco);
 
 public:
 	Carona();
+	Carona(string codigo, string origem, string destino, string data, string duracao, string vagas, string preco);
 	~Carona();
 
-	bool set_codigo(string codigo);
-	bool set_origem(string origem);
-	bool set_destino(string destino);
-	bool set_data(string data);
-	bool set_duracao(string duracao);
-	bool set_vagas(string vagas);
-	bool set_preco(string preco);
+	bool set_dados(string codigo, string origem, string destino, string data, string duracao, string vagas, string preco);
 
 	string get_dados(int tipo);
 	vector<string> get_dados();
@@ -90,7 +87,7 @@ private:
 	bool verifica_nome(string nome);
 	bool verifica_telefone(string telefone);
 	bool verifica_email(string email);
-	bool verifica_(string senha);
+	bool verifica_senha(string senha);
 	bool verifica_cpf(string cpf);
 
 
@@ -98,17 +95,14 @@ public:
 	Usuario();
 	~Usuario();
 
-	bool cadastro_completo();
-
-	bool set_nome(string nome);
-	bool set_telefone(string telefone);
-	bool set_email(string email);
-	bool set_senha(string senha);
-	bool set_cpf(string cpf);
+	bool set_dados(string nome, string telefone, string email, string senha, string cpf, Conta conta1, Conta conta2);
 
 	bool nova_reserva(Reserva nova);
 	bool nova_reserva(int codigo,char assento,int bagagem);
 	bool nova_reserva(string codigo, string assento, string bagagem);
+
+	bool nova_carona(Carona nova);
+	bool nova_carona(string codigo, string origem, string destino, string data, string duracao, string vagas, string preco);
 
 	string get_dados(int tipo);
 	vector<string> get_dados();

@@ -14,5 +14,11 @@ Interface::~Interface()
 
 void Interface::inicia_interface()
 {
-	cout << "Interface iniciada com sucesso" << endl;
+	string oi="456";
+	int i=1;
+	int a = oi[i] - '0';
+	cout << oi[i] << endl;
+	cout << a << endl;
+
+	cout << "Interface iniciada com sucesso " << endl;
 }
